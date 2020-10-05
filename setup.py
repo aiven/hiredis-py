@@ -11,9 +11,9 @@ def version():
   return module.__version__
 
 ext = Extension("hiredis.hiredis",
-  sources=sorted(glob.glob("src/*.c") +
-                 ["vendor/hiredis/%s.c" % src for src in ("read", "sds")]),
-  include_dirs=["vendor"])
+  sources=sorted(glob.glob("src/*.c")),
+  include_dirs=["vendor"],
+  extra_link_args=["-lhiredis"])
 
 setup(
   name="hiredis",
